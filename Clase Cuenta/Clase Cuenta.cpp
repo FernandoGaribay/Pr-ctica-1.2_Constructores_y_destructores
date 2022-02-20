@@ -28,6 +28,34 @@ public:
     void verDatosCuenta();
 };
 
+// Constructor por defecto
+Cuenta::Cuenta() {
+    setNumeroCuenta(1);
+    nombreTitular = new char[20];
+    setNombreTitular(" ");
+    saldo = 0;
+}
+
+// Constructor parametrizado
+Cuenta::Cuenta(int numeroCuenta, char const* nombreTitular, double saldo) {
+    this->nombreTitular = new char[strlen(nombreTitular) + 1];
+    setNumeroCuenta(numeroCuenta);
+    setNombreTitular(nombreTitular);
+    this->saldo = saldo;
+}
+
+// Constructor copia
+Cuenta::Cuenta(const Cuenta& p) {
+    this->nombreTitular = new char[strlen(p.nombreTitular) + 1];
+    setNumeroCuenta(p.numeroCuenta);
+    setNombreTitular(p.nombreTitular);
+}
+
+// Destructor
+Cuenta::~Cuenta() {
+    delete[] nombreTitular;
+}
+
 int main()
 {
 
