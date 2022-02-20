@@ -56,6 +56,40 @@ Cuenta::~Cuenta() {
     delete[] nombreTitular;
 }
 
+void Cuenta::setNumeroCuenta(int numeroCuenta) {
+    this->numeroCuenta = numeroCuenta;
+}
+
+void Cuenta::setNombreTitular(char const* nombreTitular) {
+    strcpy(this->nombreTitular, nombreTitular);
+}
+
+
+int Cuenta::getNumeroCuenta() {
+    return numeroCuenta;
+}
+
+char* Cuenta::getNombreTitular() {
+    return nombreTitular;
+}
+double Cuenta::getSaldo() {
+    return saldo;
+}
+
+
+void Cuenta::depositar(double cantidad) {
+    this->saldo += cantidad;
+}
+
+void Cuenta::retirar(double cantidad) {
+    if (saldo > cantidad)
+        this->saldo -= cantidad;
+}
+
+void Cuenta::verDatosCuenta() {
+    cout << getNumeroCuenta() << endl << getNombreTitular() << endl << getSaldo() << endl;
+}
+
 int main()
 {
 
