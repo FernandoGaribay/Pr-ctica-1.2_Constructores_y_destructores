@@ -92,6 +92,14 @@ void Cuenta::verDatosCuenta() {
 
 int main()
 {
+    Cuenta cuenta1;
+    Cuenta cuenta2(2, "Fernando", 1000);
+    Cuenta cuenta3 = cuenta2;
+
+    cuenta1.verDatosCuenta();
+    cuenta2.verDatosCuenta();
+    cuenta2.verDatosCuenta();
+
 
     system("pause");
 }
