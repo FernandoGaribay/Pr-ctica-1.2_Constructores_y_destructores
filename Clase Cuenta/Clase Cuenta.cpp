@@ -18,6 +18,7 @@ public:
 
     void setNumeroCuenta(int);
     void setNombreTitular(char const*);
+    void setSaldo(double);
 
     int getNumeroCuenta();
     char* getNombreTitular();
@@ -49,6 +50,7 @@ Cuenta::Cuenta(const Cuenta& p) {
     this->nombreTitular = new char[strlen(p.nombreTitular) + 1];
     setNumeroCuenta(p.numeroCuenta);
     setNombreTitular(p.nombreTitular);
+    setSaldo(p.saldo);
 }
 
 // Destructor
@@ -64,6 +66,10 @@ void Cuenta::setNombreTitular(char const* nombreTitular) {
     strcpy(this->nombreTitular, nombreTitular);
 }
 
+void Cuenta::setSaldo(double saldo) {
+    this->saldo = saldo;
+}
+
 
 int Cuenta::getNumeroCuenta() {
     return numeroCuenta;
@@ -72,6 +78,7 @@ int Cuenta::getNumeroCuenta() {
 char* Cuenta::getNombreTitular() {
     return nombreTitular;
 }
+
 double Cuenta::getSaldo() {
     return saldo;
 }
@@ -87,7 +94,10 @@ void Cuenta::retirar(double cantidad) {
 }
 
 void Cuenta::verDatosCuenta() {
-    cout << getNumeroCuenta() << endl << getNombreTitular() << endl << getSaldo() << endl;
+    cout << "\nNumero de cuenta: " << getNumeroCuenta()
+        << "\nNombre del titular: " << getNombreTitular() 
+        << "\nSaldo: " << getSaldo() 
+        << endl;
 }
 
 int main()
@@ -96,10 +106,13 @@ int main()
     Cuenta cuenta2(2, "Fernando", 1000);
     Cuenta cuenta3 = cuenta2;
 
+    cuenta3.depositar(200);
+    cuenta3.retirar(100);
+
     cuenta1.verDatosCuenta();
     cuenta2.verDatosCuenta();
-    cuenta2.verDatosCuenta();
+    cuenta3.verDatosCuenta();
 
-
+    cout << endl;
     system("pause");
 }
